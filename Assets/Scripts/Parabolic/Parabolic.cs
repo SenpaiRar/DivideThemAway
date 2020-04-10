@@ -23,7 +23,7 @@ public class Parabolic : MonoBehaviour
         transform.Translate((Vector3.forward*Time.deltaTime));
         DistanceToX = Mathf.Sqrt(Vector3.Distance(B, transform.position));
         transform.Translate(Vector3.right * Time.deltaTime * (DistanceToX - PrevDistanceToX));
-        Debug.Log(Vector3.Distance(B, transform.position));
+        //Debug.Log(Vector3.Distance(B, transform.position));
         //Debug.Log(DistanceToX - PrevDistanceToX);
         PrevDistanceToX = DistanceToX;
        
