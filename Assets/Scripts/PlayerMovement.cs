@@ -15,5 +15,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 x = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         PlayerBody.AddForce((x*Speed));
         PlayerBody.AddForce(-PlayerBody.velocity*PlayerBody.velocity.magnitude*FrictionalForce);
+        PlayerBody.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 }
