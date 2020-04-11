@@ -18,6 +18,16 @@ public class Pea :Bullet
             Destroy(gameObject);
         }
     }
+    
+    void OnTriggerEnter(Collider Col){
+        if(Col.gameObject.tag == "Enemy"){
+            Entity x = Col.gameObject.GetComponent<Entity>();
+            x.TakeDamage(50);
+            Destroy(gameObject);
+        }
+        Debug.Log("Encounted Collision");
+    }
+
     public override int GetDamage()
     {
         return (DamageValue);

@@ -47,5 +47,5 @@ public class BeziarCurve : MonoBehaviour
         B = (Mathf.Pow(1-t,2)*StartPoint) + ((2*(1-t))*t*CurvePoint) + (Mathf.Pow(t,2)*EndPoint);
         return(B);
     }
-
+    }
 }
