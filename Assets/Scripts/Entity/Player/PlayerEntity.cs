@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerEntity : Entity
 {
     public int StartingHP;
-
     public int currentHP;
 
     private void Start()

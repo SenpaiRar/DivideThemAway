@@ -15,7 +15,6 @@ public class Missile_Enemy : Entity
         transform.rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
         transform.Translate(Vector3.forward * Time.deltaTime*Speed);
     }
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -28,7 +27,6 @@ public class Missile_Enemy : Entity
     {
         Destroy(gameObject);
     }
-
     IEnumerator HitFreeze()
     {
         Time.timeScale = 0;
