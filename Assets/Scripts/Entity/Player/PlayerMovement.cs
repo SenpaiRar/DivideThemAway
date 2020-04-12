@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 RotVec = new Vector3(PlayerCam.ScreenToWorldPoint(Input.mousePosition).x, 0, PlayerCam.ScreenToWorldPoint(Input.mousePosition).z);
         transform.LookAt(RotVec);
-       
         Vector3 x = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         PlayerBody.AddForce((x*Speed));
         PlayerBody.AddForce(-PlayerBody.velocity*PlayerBody.velocity.magnitude*FrictionalForce);

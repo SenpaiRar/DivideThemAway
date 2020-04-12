@@ -10,6 +10,5 @@ public class HealthScript : MonoBehaviour
     private void LateUpdate()
     {
         HealthText.text = Source.currentHP.ToString()+"y";
-
     }
 }
