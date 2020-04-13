@@ -20,6 +20,7 @@ public class Missile_Enemy : Enemy
         if (collision.gameObject.tag == "Player")
         {
             Target.TakeDamage(1);
+            Destroy(gameObject);
             //StartCoroutine(HitFreeze());
         }
     }
@@ -27,21 +28,9 @@ public class Missile_Enemy : Enemy
     {
         Destroy(gameObject);
     }
-    public override void SpawnRoutine()
+    public override void SpawnRoutine(Vector3 T)
     {
-        
-            float x = Random.Range(30f, 40f);
-            float z = Random.Range(30f, 40f);
-        
-            if (Random.Range(0, 2) == 1)
-            {
-                Instantiate(this.gameObject, new Vector3(x, 0, z), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(this.gameObject, new Vector3(x, 0, -z), Quaternion.identity);
-            }
-        
+        Instantiate(this.gameObject, new Vector3(T.x, 0, T.z), Quaternion.identity);        
     }
     //TODO: Hitstun
     /*IEnumerator HitFreeze()

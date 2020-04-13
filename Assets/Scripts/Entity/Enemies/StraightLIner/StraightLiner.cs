@@ -26,8 +26,8 @@ public class StraightLiner : Enemy
     public override void TakeDamage(int T){
         Destroy(gameObject);
     }
-    public override void SpawnRoutine(){
-        Instantiate(this.gameObject, new Vector3(0,0,0), Quaternion.identity);
+    public override void SpawnRoutine(Vector3 T){
+        Instantiate(this.gameObject, new Vector3(T.x,0,T.z), Quaternion.identity);
     }
     IEnumerator Lifespan(){
         yield return new WaitForSecondsRealtime(TimeTillDeath);

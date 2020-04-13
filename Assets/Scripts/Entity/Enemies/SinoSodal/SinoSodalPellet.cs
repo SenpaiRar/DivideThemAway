@@ -2,10 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SinoSodalPellet : MonoBehaviour
+public class SinoSodalPellet : Entity
 {
     public float Frequency;
-   private void Update(){
-       transform.localPosition = new Vector3(Mathf.Sin(Time.time*Frequency),0,0);
+    public float Offset;
+    public float Amp;
+
+    private void Start(){
+        Offset = Time.time;
+    }
+    private void Update(){
+       transform.localPosition = new Vector3(Amp*Mathf.Sin((Time.time-Offset)*Frequency),0,0);
    }
+    void OnTriggerEnter(Collider col){
+       if(col.gameObject.tag == "Player"){
+           col.gameObject.GetComponent<Entity>().TakeDamage(1);
+           Destroy(transform.parent.gameObject);
+       }
+   }
+   public override void TakeDamage(int T){
+       Destroy(gameObject);
+   }
+   
 }
