@@ -12,7 +12,7 @@ public class StraightLiner : Enemy
     private void Start(){
         StartCoroutine(Lifespan());
         Target=GameObject.FindWithTag("Player").transform.position;
-        Vector3 x = Target-transform.position;
+        Direction = Target-transform.position;
     }
 
     private void Update(){

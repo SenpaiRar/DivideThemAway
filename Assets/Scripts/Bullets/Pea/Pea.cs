@@ -22,7 +22,7 @@ public class Pea :Bullet
     void OnTriggerEnter(Collider Col){
         if(Col.gameObject.tag == "Enemy"){
             Entity x = Col.gameObject.GetComponent<Entity>();
-            x.TakeDamage(1);
+            x.TakeDamage(DamageValue);
             Destroy(gameObject);
         }
         Debug.Log("Encounted Collision");

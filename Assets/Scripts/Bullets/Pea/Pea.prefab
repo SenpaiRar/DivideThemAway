@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796463f793ff594781b0b05660269de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageValue: 10
+  DamageValue: 5
   Speed: 20
   TimeToDestroy: 5
