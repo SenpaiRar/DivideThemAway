@@ -20,7 +20,7 @@ public class StraightLiner : Enemy
     }
     private void OnTriggerEnter(Collider col){
         if(col.gameObject.tag == "Player"){
-            col.GetComponent<Entity>().TakeDamage(Damage);
+           col.GetComponent<Entity>().TakeDamage(Damage);
         }
     }
     public override void TakeDamage(int T){
