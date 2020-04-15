@@ -15,11 +15,15 @@ public class EnemySpawner : MonoBehaviour
     public List<Enemy> EnemyTypesAvailable = new List<Enemy>();
     public List<Collider> SpawnRegions = new List<Collider>();
     public Difficulty CurrentDifficulty;
+    public float TimeBetweenWaves;
     
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
         StartCoroutine(RampUpDifficulty());
+    }
+    private void Update(){
+        Debug.Log(CurrentDifficulty);
     }
 
     IEnumerator SpawnEnemies()
@@ -35,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 
             }
-            yield return new WaitForSecondsRealtime(1.0f);
+            yield return new WaitForSecondsRealtime(TimeBetweenWaves);
         }
     }
     IEnumerator RampUpDifficulty()
@@ -49,18 +53,22 @@ public class EnemySpawner : MonoBehaviour
                 case Difficulty.Beginning:
                     CurrentDifficulty = Difficulty.Medium;
                     Debug.Log("New Level!");
+                    yield return new WaitForSecondsRealtime(30*(int)CurrentDifficulty);
                     break;
                 case Difficulty.Medium:
                     CurrentDifficulty = Difficulty.Hard;
+                    yield return new WaitForSecondsRealtime(30*(int)CurrentDifficulty);
                     break;
                 case Difficulty.Hard:
                     CurrentDifficulty = Difficulty.Insane;
+                    yield return new WaitForSecondsRealtime(30*(int)CurrentDifficulty);
                     break;
                 case Difficulty.Insane:
                     Debug.Log("Max Difficulty Reached!");
                     break;
+
             }
-            yield return new WaitForSecondsRealtime(30*(int)CurrentDifficulty);
+            yield return new WaitForEndOfFrame();
         }
     }
 }

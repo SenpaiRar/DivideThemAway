@@ -4,18 +4,63 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public List<GameObject> ListOfBullets;
+    
+    public List<WeaponObject> ListOfWeapons;
 
+    public WeaponObject CurrentWeaponObject{
+        get{
+            return ListOfWeapons[CurrentWeapon];
+        }
+    }
+    public float WeaponSwitchCoolDown;
+    int CurrentWeapon;
+    float timeSinceLastShot; 
+    float timeSinceLastSwitch;
+
+    private void Start(){
+        CurrentWeapon = 0;
+        timeSinceLastShot = 100;
+        timeSinceLastSwitch = 100;
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && timeSinceLastShot >= ListOfWeapons[CurrentWeapon].CooldownTime)
         {
             Shoot();
+        }
+        SwitchWeapon();
+        timeSinceLastShot += Time.deltaTime;
+        timeSinceLastShot += Time.deltaTime;
+    }
+
+    void SwitchWeapon(){
+        if(Input.GetKeyUp(KeyCode.Q)){
+            if(timeSinceLastSwitch < WeaponSwitchCoolDown){
+                timeSinceLastSwitch = 0;
+                if(CurrentWeapon - 1 < 0){
+                    CurrentWeapon = ListOfWeapons.Count-1;
+                }
+                else{
+                    CurrentWeapon--;
+                }
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.E)){
+            if(timeSinceLastSwitch < WeaponSwitchCoolDown){
+                timeSinceLastSwitch = 0;
+                if(CurrentWeapon == ListOfWeapons.Count){
+                    CurrentWeapon = 0;
+                }
+                    else{
+                    CurrentWeapon++;
+                }
+            }
         }
     }
 
     void Shoot()
     {
-        Instantiate(ListOfBullets[0], transform.position, transform.rotation);
+        Instantiate(ListOfWeapons[CurrentWeapon].BulletObject, transform.position, transform.rotation);
+        timeSinceLastShot = 0;
     }
 }

@@ -21,6 +21,7 @@ public class StraightLiner : Enemy
     private void OnTriggerEnter(Collider col){
         if(col.gameObject.tag == "Player"){
            col.GetComponent<Entity>().TakeDamage(Damage);
+           Destroy(gameObject);
         }
     }
     public override void TakeDamage(int T){
