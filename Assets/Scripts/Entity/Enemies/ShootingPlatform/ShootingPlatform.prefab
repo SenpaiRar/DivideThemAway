@@ -193,8 +193,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 6.242012}
+  m_Center: {x: 0, y: 0, z: 0.78166056}
 --- !u!114 &52691832166294556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,8 @@ MonoBehaviour:
   StartingHeatlth: 50
   Bullet: {fileID: 2281753646256413903, guid: 1d06c1cf039e1da49819e4e8ef114321, type: 3}
   WaitTime: 1
+  BodyText: {fileID: 2786636828746016360}
+  HitColor: {r: 0.8018868, g: 0.3517711, b: 0.3517711, a: 0}
 --- !u!54 &52691832166294545
 Rigidbody:
   m_ObjectHideFlags: 0

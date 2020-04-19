@@ -16,11 +16,15 @@ public class EnemySpawner : MonoBehaviour
     public List<Collider> SpawnRegions = new List<Collider>();
     public Difficulty CurrentDifficulty;
     public float TimeBetweenWaves;
+    public bool ShouldSpawnEnemies;
+    public int MaxEnemyCount;
     
     private void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        ShouldSpawnEnemies = true;
         StartCoroutine(RampUpDifficulty());
+        StartCoroutine(SpawnEnemies());
+        StartCoroutine(CheckEnemyLevels());
     }
     private void Update(){
         Debug.Log(CurrentDifficulty);
@@ -28,8 +32,10 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
+        
         for(; ; )
         {
+            while(ShouldSpawnEnemies){
             foreach (Enemy item in EnemyTypesAvailable)
             {
                 for (int i = 0; i < (int)CurrentDifficulty; i++)
@@ -40,12 +46,16 @@ public class EnemySpawner : MonoBehaviour
                 
             }
             yield return new WaitForSecondsRealtime(TimeBetweenWaves);
+            }
+            yield return new WaitForSecondsRealtime(1.0f);
         }
+        
     }
     IEnumerator RampUpDifficulty()
     {
         CurrentDifficulty = Difficulty.Beginning;
         yield return new WaitForSecondsRealtime(30f);
+        
         for (; ; )
         {
             switch (CurrentDifficulty)
@@ -69,6 +79,18 @@ public class EnemySpawner : MonoBehaviour
 
             }
             yield return new WaitForEndOfFrame();
+        
+        }
+    }
+    IEnumerator CheckEnemyLevels(){
+        for(;;){
+            if(GameObject.FindGameObjectsWithTag("Enemy").Length > MaxEnemyCount-1){
+                ShouldSpawnEnemies = false;
+            }
+            else{
+                ShouldSpawnEnemies = true;
+            }
+            yield return new WaitForSecondsRealtime(5.0f);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShootingPlatform : Enemy
 {
     
@@ -9,6 +9,8 @@ public class ShootingPlatform : Enemy
     public int StartingHeatlth;
     public GameObject Bullet;
     public float WaitTime;
+    public Text BodyText;
+    public Color HitColor;
     Vector3[] NextTargets = new Vector3[2];
     Vector3 Direction;
     void Start()
@@ -38,6 +40,7 @@ public class ShootingPlatform : Enemy
     public override void TakeDamage(int T)
     {
         Debug.Log(StartingHeatlth);
+        StartCoroutine(HitSignal());
         StartingHeatlth -= T;
         if(StartingHeatlth <= 0)
         {
@@ -70,5 +73,10 @@ public class ShootingPlatform : Enemy
         Instantiate(Bullet, transform.position, Quaternion.identity);
           
     }
-
+    IEnumerator HitSignal(){
+        BodyText.color = HitColor;
+        yield return new WaitForSecondsRealtime(0.1f);
+        BodyText.color = Color.black;
+        yield return null;
+    }
 }

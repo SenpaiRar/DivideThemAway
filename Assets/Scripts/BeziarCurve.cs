@@ -34,10 +34,6 @@ public class BeziarCurve : MonoBehaviour
        
         
     }
-    void FixedUpdate(){
-        
-
-    }
     Vector2 CalculateDerv(float t){
         Vector2 D = ((2*(1-p)*(CurvePoint-StartPoint)) + 2*p*(EndPoint-CurvePoint) );
         return(D);
