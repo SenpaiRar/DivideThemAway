@@ -30,14 +30,14 @@ public class PlayerShoot : MonoBehaviour
         }
         SwitchWeapon();
         timeSinceLastShot += Time.deltaTime;
-        timeSinceLastShot += Time.deltaTime;
+        timeSinceLastSwitch +=Time.deltaTime;
     }
 
     void SwitchWeapon(){
         if(Input.GetKeyUp(KeyCode.Q)){
-            if(timeSinceLastSwitch < WeaponSwitchCoolDown){
+            if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
-                if(CurrentWeapon - 1 < 0){
+                if(CurrentWeapon ==0){
                     CurrentWeapon = ListOfWeapons.Count-1;
                 }
                 else{
@@ -46,9 +46,9 @@ public class PlayerShoot : MonoBehaviour
             }
         }
         if(Input.GetKeyUp(KeyCode.E)){
-            if(timeSinceLastSwitch < WeaponSwitchCoolDown){
+            if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
-                if(CurrentWeapon == ListOfWeapons.Count){
+                if(CurrentWeapon + 1 == ListOfWeapons.Count){
                     CurrentWeapon = 0;
                 }
                     else{

@@ -13,6 +13,7 @@ public class StraightLiner : Enemy
         StartCoroutine(Lifespan());
         Target=GameObject.FindWithTag("Player").transform.position;
         Direction = Target-transform.position;
+        
     }
 
     private void Update(){

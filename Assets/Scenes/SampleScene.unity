@@ -697,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListOfWeapons:
   - {fileID: 11400000, guid: 7ccb33e29e6e4411d9ac3d502e5fab78, type: 2}
+  - {fileID: 11400000, guid: b432f6a95ba1645c2a65ce14d2b6c268, type: 2}
   WeaponSwitchCoolDown: 0
 --- !u!114 &1201435722
 MonoBehaviour:

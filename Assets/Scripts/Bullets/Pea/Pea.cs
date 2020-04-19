@@ -9,14 +9,13 @@ public class Pea :Bullet
     public float Speed;
     public float TimeToDestroy;
     float timer;
+
+    private void Start(){
+        StartCoroutine(Lifespan());
+    }
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward*Speed*Time.deltaTime, Space.Self);
-        timer += Time.deltaTime;
-        if(timer > TimeToDestroy)
-        {
-            Destroy(gameObject);
-        }
     }
     
     void OnTriggerEnter(Collider Col){
@@ -33,5 +32,8 @@ public class Pea :Bullet
         return (DamageValue);
     }
 
-   
+   IEnumerator Lifespan(){
+       yield return new WaitForSecondsRealtime(10.0f);
+       Destroy(gameObject);
+   }
 }
