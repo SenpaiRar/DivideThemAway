@@ -8,4 +8,5 @@ public class WeaponObject : ScriptableObject
     public GameObject BulletObject;
     public string Name;
     public float CooldownTime;
+    public AudioClip ShootSound;
 }

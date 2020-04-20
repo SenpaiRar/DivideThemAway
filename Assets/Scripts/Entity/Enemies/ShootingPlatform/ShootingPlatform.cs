@@ -11,6 +11,8 @@ public class ShootingPlatform : Enemy
     public float WaitTime;
     public Text BodyText;
     public Color HitColor;
+    public AudioClip DamageSound;
+    AudioSource Audiosrc;
     Vector3[] NextTargets = new Vector3[2];
     Vector3 Direction;
     void Start()
@@ -19,6 +21,7 @@ public class ShootingPlatform : Enemy
         NextTargets[0] = new Vector3(Random.Range(-26.7f, 26.7f), 0, Random.Range(-15f, 15f));
         NextTargets[1] = new Vector3(Random.Range(-26.7f, 26.7f), 0, Random.Range(-15f, 15f));
         Direction = NextTargets[1] - transform.position;
+        Audiosrc = GetComponent<AudioSource>();
 
         StartCoroutine(Move());
     }
@@ -39,7 +42,7 @@ public class ShootingPlatform : Enemy
     }
     public override void TakeDamage(int T)
     {
-        Debug.Log(StartingHeatlth);
+        Audiosrc.PlayOneShot(DamageSound);
         StartCoroutine(HitSignal());
         StartingHeatlth -= T;
         if(StartingHeatlth <= 0)

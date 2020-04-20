@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     
     public List<WeaponObject> ListOfWeapons;
-
+    public AudioSource Audiosrc;
     public WeaponObject CurrentWeaponObject{
         get{
             return ListOfWeapons[CurrentWeapon];
@@ -61,6 +61,7 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         Instantiate(ListOfWeapons[CurrentWeapon].BulletObject, transform.position, transform.rotation);
+        Audiosrc.PlayOneShot(ListOfWeapons[CurrentWeapon].ShootSound);
         timeSinceLastShot = 0;
     }
 }

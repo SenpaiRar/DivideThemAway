@@ -16,7 +16,7 @@ public class CircleWeapon : Bullet
     }
 
     void OnTriggerEnter(Collider col){
-        if(col.gameObject.tag == "Enemy"){
+        if(col.gameObject.tag != "Player"){
             col.GetComponent<Entity>().TakeDamage(DamageValue);
         }
     }
