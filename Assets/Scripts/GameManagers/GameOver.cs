@@ -15,6 +15,8 @@ public class GameOver : MonoBehaviour
         if(Source.currentHP <= 0){
             GameOverCanvas.SetActive(true);
             Anima.SetBool("GameOver", true);
+
+            Time.timeScale = 0;
             
         }
     }

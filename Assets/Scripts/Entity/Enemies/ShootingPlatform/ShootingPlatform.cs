@@ -64,7 +64,7 @@ public class ShootingPlatform : Enemy
                 yield return new WaitForSecondsRealtime(WaitTime);
             }
             Direction = NextTargets[1] - transform.position;
-            transform.position = Vector3.Lerp(transform.position, NextTargets[0], 0.1f);
+            transform.position = Vector3.Lerp(transform.position, NextTargets[0], 0.1f*Time.timeScale);
             transform.rotation = Quaternion.LookRotation(Direction);
             yield return new WaitForEndOfFrame();
         }
