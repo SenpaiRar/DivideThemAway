@@ -16,3 +16,4 @@ MonoBehaviour:
     type: 3}
   Name: "y=x\xB2"
   CooldownTime: 0.5
+  ShootSound: {fileID: 8300000, guid: 5d39af855a8b7481384665f3d4518a1c, type: 3}

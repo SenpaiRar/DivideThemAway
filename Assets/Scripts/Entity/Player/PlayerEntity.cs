@@ -6,8 +6,11 @@ public class PlayerEntity : Entity
 {
     public int StartingHP;
     public int currentHP;
+    public float HitfreezeTime;
     public AudioClip DamageSound;
+    public AudioClip DeathSound;
     public AudioSource AudioSrc;
+
     private void Start()
     {
         currentHP = StartingHP;
@@ -19,13 +22,13 @@ public class PlayerEntity : Entity
         StartCoroutine(HitFreeze());
         if(currentHP <= 0)
         {
-            //TODO: Player Death
+            AudioSrc.PlayOneShot(DeathSound, 0.6f);
         }
 
     }
     IEnumerator HitFreeze (){
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(HitfreezeTime);
         Time.timeScale = 1;
     }
 

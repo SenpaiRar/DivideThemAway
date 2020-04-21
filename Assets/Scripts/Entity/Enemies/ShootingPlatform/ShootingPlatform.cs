@@ -12,6 +12,7 @@ public class ShootingPlatform : Enemy
     public Text BodyText;
     public Color HitColor;
     public AudioClip DamageSound;
+    public AudioClip DeathSound;
     AudioSource Audiosrc;
     Vector3[] NextTargets = new Vector3[2];
     Vector3 Direction;
@@ -47,6 +48,7 @@ public class ShootingPlatform : Enemy
         StartingHeatlth -= T;
         if(StartingHeatlth <= 0)
         {
+            Player.GetComponent<AudioSource>().PlayOneShot(DeathSound);
             Destroy(gameObject);
         }
     }

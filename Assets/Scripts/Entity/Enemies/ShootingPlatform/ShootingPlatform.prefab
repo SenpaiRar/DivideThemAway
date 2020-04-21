@@ -214,6 +214,7 @@ MonoBehaviour:
   BodyText: {fileID: 2786636828746016360}
   HitColor: {r: 1, g: 1, b: 1, a: 0}
   DamageSound: {fileID: 8300000, guid: 5cc441ebd80d647ba98fde62d9fbc9ec, type: 3}
+  DeathSound: {fileID: 8300000, guid: c0aed5d5e6d6848f98ff93bc37afbc7c, type: 3}
 --- !u!54 &52691832166294545
 Rigidbody:
   m_ObjectHideFlags: 0

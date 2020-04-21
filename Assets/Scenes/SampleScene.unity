@@ -810,8 +810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTypesAvailable:
+  - {fileID: 1184186391888983676, guid: 0a48e26a6e1309846a0467a0f90c55d1, type: 3}
   - {fileID: 52691832166294556, guid: 8a9dc2a182a47524f8972fc44251e3fe, type: 3}
-  - {fileID: 8475088335017864795, guid: 68a0731e5ff2e40cba86a3c1f96273b3, type: 3}
   SpawnRegions:
   - {fileID: 402656059}
   - {fileID: 35286390}
@@ -879,7 +879,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b432f6a95ba1645c2a65ce14d2b6c268, type: 2}
   - {fileID: 11400000, guid: a8714e5d286e74d48bf8f01963a40cad, type: 2}
   Audiosrc: {fileID: 1201435726}
-  WeaponSwitchCoolDown: 0
+  SwitchSound: {fileID: 8300000, guid: a77305f4a5b0e48b099d683146a5446d, type: 3}
+  NoSwitchSound: {fileID: 8300000, guid: 914b0b42e8081425cadb3250ab5e2982, type: 3}
+  WeaponSwitchCoolDown: 4
 --- !u!114 &1201435722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +896,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingHP: 3
   currentHP: 0
+  HitfreezeTime: 0.2
   DamageSound: {fileID: 8300000, guid: 79d9c738be2b54a0f8a516812bd6a4ff, type: 3}
+  DeathSound: {fileID: 8300000, guid: 95bf7b6ca06064dabbfbd401fedbd0b2, type: 3}
   AudioSrc: {fileID: 1201435726}
 --- !u!114 &1201435723
 MonoBehaviour:
@@ -1522,7 +1526,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871760549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.18, z: 1}
   m_Children: []
@@ -1531,7 +1535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 7.1}
+  m_AnchoredPosition: {x: 0, y: 7.099939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871760551

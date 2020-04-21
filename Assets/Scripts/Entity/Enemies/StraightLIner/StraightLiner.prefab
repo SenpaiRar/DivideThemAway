@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   TimeTillDeath: 10
+  DeathSound: {fileID: 8300000, guid: a178c9e8f0bff4fbfb94f611934976f4, type: 3}
   Damage: 1
 --- !u!54 &2281753646256413909
 Rigidbody:

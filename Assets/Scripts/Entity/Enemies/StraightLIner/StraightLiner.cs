@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class StraightLiner : Enemy
 {
-    Vector3 Target;  
+    GameObject Target;  
     Vector3 Direction;  
     public float Speed;
     public float TimeTillDeath; //How long until self-destruct
+    public AudioClip DeathSound;
     public int Damage;
     private void Start(){
         StartCoroutine(Lifespan());
-        Target=GameObject.FindWithTag("Player").transform.position;
-        Direction = Target-transform.position;
+        Target=GameObject.FindWithTag("Player");
+        Direction = Target.transform.position-transform.position;
         
     }
 
@@ -26,6 +27,7 @@ public class StraightLiner : Enemy
         }
     }
     public override void TakeDamage(int T){
+        Target.GetComponent<AudioSource>().PlayOneShot(DeathSound);
         Destroy(gameObject);
     }
     public override void SpawnRoutine(Vector3 T){

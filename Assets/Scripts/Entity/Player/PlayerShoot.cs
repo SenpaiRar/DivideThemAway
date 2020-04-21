@@ -7,6 +7,8 @@ public class PlayerShoot : MonoBehaviour
     
     public List<WeaponObject> ListOfWeapons;
     public AudioSource Audiosrc;
+    public AudioClip SwitchSound;
+    public AudioClip NoSwitchSound;
     public WeaponObject CurrentWeaponObject{
         get{
             return ListOfWeapons[CurrentWeapon];
@@ -37,6 +39,7 @@ public class PlayerShoot : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Q)){
             if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
+                Audiosrc.PlayOneShot(SwitchSound);
                 if(CurrentWeapon ==0){
                     CurrentWeapon = ListOfWeapons.Count-1;
                 }
@@ -44,16 +47,23 @@ public class PlayerShoot : MonoBehaviour
                     CurrentWeapon--;
                 }
             }
+            else{
+                Audiosrc.PlayOneShot(NoSwitchSound);
+            }
         }
         if(Input.GetKeyUp(KeyCode.E)){
             if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
+                Audiosrc.PlayOneShot(SwitchSound);
                 if(CurrentWeapon + 1 == ListOfWeapons.Count){
                     CurrentWeapon = 0;
                 }
                     else{
                     CurrentWeapon++;
                 }
+            }
+            else{
+                Audiosrc.PlayOneShot(NoSwitchSound);
             }
         }
     }

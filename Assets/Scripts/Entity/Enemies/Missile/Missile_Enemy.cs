@@ -6,6 +6,7 @@ public class Missile_Enemy : Enemy
 {
     public Entity Target;
     public float Speed;
+    public AudioClip DeathSound;
     private void Start()
     {
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
@@ -26,6 +27,7 @@ public class Missile_Enemy : Enemy
     }
     public override void TakeDamage(int T)
     {
+        Target.GetComponent<AudioSource>().PlayOneShot(DeathSound);
         Destroy(gameObject);
     }
     public override void SpawnRoutine(Vector3 T)
