@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2789357e7ea944b6c92bc7ca8535cb10, type: 3}
+  m_Name: StraightLine_Enemy
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 2281753646256413903, guid: 1d06c1cf039e1da49819e4e8ef114321, type: 3}
+  LevelToSpawnAt: 1
+  numberMultiplier: 5
+  SpawnInterval: 0.5

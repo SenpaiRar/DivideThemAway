@@ -7,4 +7,5 @@ public class EnemyObject : ScriptableObject{
     public GameObject Enemy;
     public Difficulty LevelToSpawnAt;
     public int numberMultiplier;
+    public float SpawnInterval;
 }

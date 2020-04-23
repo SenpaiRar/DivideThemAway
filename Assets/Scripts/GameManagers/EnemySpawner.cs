@@ -10,9 +10,25 @@ public enum Difficulty
     Insane = 8
 }
 
+public class SpawnObjectInternal{
+    public SpawnObjectInternal(GameObject Internal, float TimeB){
+        if(Internal.GetComponent<Enemy>() == null){
+            throw new System.Exception();
+        }
+        this.InternalEnemy = Internal;
+        this.TimeBetweenSpawns = TimeB;
+        this.EnemyDiff = Internal.GetComponent<EnemyObject>().LevelToSpawnAt;
+    }
+    public GameObject InternalEnemy;
+    public Difficulty EnemyDiff;
+    public float TimeBetweenSpawns;
+    public float TimePassedSinceSpawn;
+}
+
 public class EnemySpawner : MonoBehaviour
 {
-    public List<Enemy> EnemyTypesAvailable = new List<Enemy>();
+    public List<EnemyObject> EnemyTypesAvailable = new List<EnemyObject>();
+    public List<SpawnObjectInternal> Spawnables = new List<SpawnObjectInternal>();
     public List<Collider> SpawnRegions = new List<Collider>();
     public Difficulty CurrentDifficulty;
     public float TimeBetweenWaves;
@@ -22,6 +38,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         ShouldSpawnEnemies = true;
+        PopulateInternalList();
         StartCoroutine(RampUpDifficulty());
         StartCoroutine(SpawnEnemies());
         StartCoroutine(CheckEnemyLevels());
@@ -29,25 +46,37 @@ public class EnemySpawner : MonoBehaviour
     private void Update(){
         Debug.Log(CurrentDifficulty);
     }
+    void PopulateInternalList(){
+        foreach(EnemyObject x in EnemyTypesAvailable){
+            Spawnables.Add(new SpawnObjectInternal(x.Enemy, x.SpawnInterval));
+        }
+    }
+    Vector3 GetRandPosInRegion(){
+        int x = Random.Range(0,SpawnRegions.Count-1);
+        Vector3 RandPos = new Vector3(Random.Range(SpawnRegions[x].bounds.min.x,SpawnRegions[x].bounds.max.x),0,Random.Range(SpawnRegions[x].bounds.min.z,SpawnRegions[x].bounds.max.z));
+        return RandPos;
+    }
 
     IEnumerator SpawnEnemies()
     {
         
         for(; ; )
         {
-            while(ShouldSpawnEnemies){
-            foreach (Enemy item in EnemyTypesAvailable)
-            {
-                for (int i = 0; i < (int)CurrentDifficulty; i++)
-                {
-                    int x = Random.Range(0,4);
-                    item.SpawnRoutine(new Vector3(Random.Range(SpawnRegions[x].bounds.min.x,SpawnRegions[x].bounds.max.x),0,Random.Range(SpawnRegions[x].bounds.min.z,SpawnRegions[x].bounds.max.z)));
+            foreach (SpawnObjectInternal x in Spawnables){
+                if(x.EnemyDiff >= CurrentDifficulty){
+                    
+                    if(x.TimePassedSinceSpawn > x.TimeBetweenSpawns){
+                        x.InternalEnemy.GetComponent<Enemy>().SpawnRoutine(GetRandPosInRegion());
+                        x.TimePassedSinceSpawn = 0;
+                        x.TimePassedSinceSpawn+=Time.deltaTime;
+                    }
+                    else{
+                        x.TimePassedSinceSpawn+=Time.deltaTime;
+                    }
                 }
-                
             }
-            yield return new WaitForSecondsRealtime(TimeBetweenWaves);
-            }
-            yield return new WaitForSecondsRealtime(1.0f);
+            
+            yield return new WaitForEndOfFrame();
         }
         
     }
@@ -82,6 +111,7 @@ public class EnemySpawner : MonoBehaviour
         
         }
     }
+    
     IEnumerator CheckEnemyLevels(){
         for(;;){
             if(GameObject.FindGameObjectsWithTag("Enemy").Length > MaxEnemyCount-1){
