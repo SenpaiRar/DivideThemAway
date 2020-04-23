@@ -11,6 +11,9 @@ public class PlayerEntity : Entity
     public AudioClip DeathSound;
     public AudioSource AudioSrc;
 
+    public delegate void PlayerStatus();
+    public static event PlayerStatus OnPlayerDeath;
+
     private void Start()
     {
         currentHP = StartingHP;
@@ -18,11 +21,15 @@ public class PlayerEntity : Entity
     public override void TakeDamage(int T)
     {
         currentHP -= T;
-        AudioSrc.PlayOneShot(DamageSound);
-        StartCoroutine(HitFreeze());
-        if(currentHP <= 0)
+        if(currentHP>0){
+            AudioSrc.PlayOneShot(DamageSound);
+            StartCoroutine(HitFreeze());
+        }
+        else
         {
             AudioSrc.PlayOneShot(DeathSound, 0.6f);
+            if(OnPlayerDeath !=null)
+                OnPlayerDeath.Invoke();
         }
 
     }

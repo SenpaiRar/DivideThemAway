@@ -11,13 +11,13 @@ public enum Difficulty
 }
 
 public class SpawnObjectInternal{
-    public SpawnObjectInternal(GameObject Internal, float TimeB){
+    public SpawnObjectInternal(GameObject Internal, float TimeB, Difficulty Diff){
         if(Internal.GetComponent<Enemy>() == null){
             throw new System.Exception();
         }
         this.InternalEnemy = Internal;
         this.TimeBetweenSpawns = TimeB;
-        this.EnemyDiff = Internal.GetComponent<EnemyObject>().LevelToSpawnAt;
+        this.EnemyDiff = Diff;
     }
     public GameObject InternalEnemy;
     public Difficulty EnemyDiff;
@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
     }
     void PopulateInternalList(){
         foreach(EnemyObject x in EnemyTypesAvailable){
-            Spawnables.Add(new SpawnObjectInternal(x.Enemy, x.SpawnInterval));
+            Spawnables.Add(new SpawnObjectInternal(x.Enemy, x.SpawnInterval, x.LevelToSpawnAt));
         }
     }
     Vector3 GetRandPosInRegion(){
@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         for(; ; )
         {
             foreach (SpawnObjectInternal x in Spawnables){
-                if(x.EnemyDiff >= CurrentDifficulty){
+                if((int)x.EnemyDiff <= (int)CurrentDifficulty && ShouldSpawnEnemies){
                     
                     if(x.TimePassedSinceSpawn > x.TimeBetweenSpawns){
                         x.InternalEnemy.GetComponent<Enemy>().SpawnRoutine(GetRandPosInRegion());

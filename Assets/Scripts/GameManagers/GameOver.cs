@@ -6,18 +6,23 @@ public class GameOver : MonoBehaviour
 {
     public PlayerEntity Source;
     public GameObject GameOverCanvas;
-    public Animator Anima;
+    public Animator SweepAnimation;
+    public Animator WeaponTextAnimation;
+    public Animator HealthTextAnimation;
     private void Start()
     {
         GameOverCanvas.SetActive(false);
+        PlayerEntity.OnPlayerDeath += StartAnimations;
+        PlayerEntity.OnPlayerDeath += ZA_WARUDO;
     }
-    private void Update(){
-        if(Source.currentHP <= 0){
-            GameOverCanvas.SetActive(true);
-            Anima.SetBool("GameOver", true);
-
-            Time.timeScale = 0;
-            
-        }
+    
+    void StartAnimations(){
+        GameOverCanvas.SetActive(true);
+        SweepAnimation.SetBool("GameOver", true);
+        WeaponTextAnimation.SetBool("GameOver", true);
+        HealthTextAnimation.SetBool("GameOver", true);
+    }
+    void ZA_WARUDO(){
+        Time.timeScale = 0;
     }
 }

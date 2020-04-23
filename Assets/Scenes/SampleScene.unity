@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 854296791}
   - component: {fileID: 854296790}
   - component: {fileID: 854296789}
+  - component: {fileID: 854296792}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -536,6 +537,25 @@ RectTransform:
   m_AnchoredPosition: {x: -20.23999, y: -15.299988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &854296792
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854296788}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88fc2e4c0b40647c39a7ef1612ba1a32, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &870789897
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +832,8 @@ MonoBehaviour:
   EnemyTypesAvailable:
   - {fileID: 11400000, guid: 1a7e31a36fd624e3387eb688596bd39d, type: 2}
   - {fileID: 11400000, guid: 5f96c12b4c7d14b70ab4554d79235f84, type: 2}
+  - {fileID: 11400000, guid: 7a633456c7bb54fc7a9992eae7b947e4, type: 2}
+  - {fileID: 11400000, guid: 114e437b3704a405f86d1d5f28de5c62, type: 2}
   SpawnRegions:
   - {fileID: 402656059}
   - {fileID: 35286390}
@@ -849,7 +871,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Source: {fileID: 1201435722}
   GameOverCanvas: {fileID: 2053084884}
-  Anima: {fileID: 870789899}
+  SweepAnimation: {fileID: 870789899}
+  WeaponTextAnimation: {fileID: 1629890722}
+  HealthTextAnimation: {fileID: 854296792}
 --- !u!1 &1201435717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: aaa9dea75828a9541908645e8373c71e,
@@ -1213,6 +1237,7 @@ GameObject:
   - component: {fileID: 1629890719}
   - component: {fileID: 1629890721}
   - component: {fileID: 1629890720}
+  - component: {fileID: 1629890722}
   m_Layer: 5
   m_Name: WeaponText
   m_TagString: Untagged
@@ -1279,6 +1304,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629890718}
   m_CullTransparentMesh: 0
+--- !u!95 &1629890722
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629890718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2d67a8ba4dc24df0a7b81287e386425, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1710374051
 PrefabInstance:
   m_ObjectHideFlags: 0
