@@ -13,7 +13,7 @@ public class PlayerEntity : Entity
 
     public delegate void PlayerStatus();
     public static event PlayerStatus OnPlayerDeath;
-
+    public static event PlayerStatus OnPlayerHit;
     private void Start()
     {
         currentHP = StartingHP;
@@ -22,6 +22,8 @@ public class PlayerEntity : Entity
     {
         currentHP -= T;
         if(currentHP>0){
+            if (OnPlayerHit != null)
+                OnPlayerHit.Invoke();
             AudioSrc.PlayOneShot(DamageSound);
             StartCoroutine(HitFreeze());
         }
