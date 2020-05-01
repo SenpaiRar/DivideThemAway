@@ -40,7 +40,7 @@ public class ParabolicBullet : Bullet
     }
 
     void OnTriggerEnter(Collider col){
-        if(col.tag != "Player"){
+        if(col.tag == "Enemy" || col.tag=="Enemy_Bullet"){
             col.GetComponent<Entity>().TakeDamage(Damage);
         }
     }

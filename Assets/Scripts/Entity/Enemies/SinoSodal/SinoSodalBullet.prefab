@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8714243586401438704}
   m_Layer: 0
   m_Name: SinoSodalBullet
-  m_TagString: Untagged
+  m_TagString: Enemy_Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

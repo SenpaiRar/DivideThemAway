@@ -19,7 +19,7 @@ public class Pea :Bullet
     }
     
     void OnTriggerEnter(Collider Col){
-        if(Col.tag != "Player"){
+        if(Col.tag == "Enemy" || Col.tag=="Enemy_Bullet"){
             Entity x = Col.gameObject.GetComponent<Entity>();
             x.TakeDamage(DamageValue);
             Destroy(gameObject);
