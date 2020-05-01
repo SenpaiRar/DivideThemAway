@@ -44,13 +44,13 @@ public class ShootingPlatform : Enemy
     }
     public override void TakeDamage(int T)
     {
-        Audiosrc.PlayOneShot(DamageSound);
+        Audiosrc.PlayOneShot(DamageSound, AudioConstant.AudioScale);
         StartCoroutine(HitSignal());
         StartingHeatlth -= T;
         if(StartingHeatlth <= 0)
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<Score_Manager>().AddScore(Score);
-            Player.GetComponent<AudioSource>().PlayOneShot(DeathSound);
+            Player.GetComponent<AudioSource>().PlayOneShot(DeathSound, AudioConstant.AudioScale);
             Destroy(gameObject);
         }
     }

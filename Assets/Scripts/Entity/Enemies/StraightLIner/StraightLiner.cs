@@ -29,7 +29,7 @@ public class StraightLiner : Enemy
     }
     public override void TakeDamage(int T){
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Score_Manager>().AddScore(Score);
-        Target.GetComponent<AudioSource>().PlayOneShot(DeathSound);
+        Target.GetComponent<AudioSource>().PlayOneShot(DeathSound, AudioConstant.AudioScale);
         Destroy(gameObject);
     }
     public override void SpawnRoutine(Vector3 T){

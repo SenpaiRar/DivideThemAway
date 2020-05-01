@@ -24,12 +24,12 @@ public class PlayerEntity : Entity
         if(currentHP>0){
             if (OnPlayerHit != null)
                 OnPlayerHit.Invoke();
-            AudioSrc.PlayOneShot(DamageSound);
+            AudioSrc.PlayOneShot(DamageSound, AudioConstant.AudioScale);
             StartCoroutine(HitFreeze());
         }
         else
         {
-            AudioSrc.PlayOneShot(DeathSound, 0.6f);
+            AudioSrc.PlayOneShot(DeathSound, AudioConstant.AudioScale);
             if(OnPlayerDeath !=null)
                 OnPlayerDeath.Invoke();
         }

@@ -39,7 +39,7 @@ public class PlayerShoot : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Q)){
             if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
-                Audiosrc.PlayOneShot(SwitchSound);
+                Audiosrc.PlayOneShot(SwitchSound, AudioConstant.AudioScale);
                 if(CurrentWeapon ==0){
                     CurrentWeapon = ListOfWeapons.Count-1;
                 }
@@ -48,13 +48,13 @@ public class PlayerShoot : MonoBehaviour
                 }
             }
             else{
-                Audiosrc.PlayOneShot(NoSwitchSound);
+                Audiosrc.PlayOneShot(NoSwitchSound, AudioConstant.AudioScale);
             }
         }
         if(Input.GetKeyUp(KeyCode.E)){
             if(timeSinceLastSwitch > WeaponSwitchCoolDown){
                 timeSinceLastSwitch = 0;
-                Audiosrc.PlayOneShot(SwitchSound);
+                Audiosrc.PlayOneShot(SwitchSound, AudioConstant.AudioScale);
                 if(CurrentWeapon + 1 == ListOfWeapons.Count){
                     CurrentWeapon = 0;
                 }
@@ -63,7 +63,7 @@ public class PlayerShoot : MonoBehaviour
                 }
             }
             else{
-                Audiosrc.PlayOneShot(NoSwitchSound);
+                Audiosrc.PlayOneShot(NoSwitchSound, AudioConstant.AudioScale);
             }
         }
     }
@@ -71,7 +71,7 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         Instantiate(ListOfWeapons[CurrentWeapon].BulletObject, transform.position, transform.rotation);
-        Audiosrc.PlayOneShot(ListOfWeapons[CurrentWeapon].ShootSound);
+        Audiosrc.PlayOneShot(ListOfWeapons[CurrentWeapon].ShootSound, AudioConstant.AudioScale);
         timeSinceLastShot = 0;
     }
 }
