@@ -36,8 +36,8 @@ public class GameOver : MonoBehaviour
     {
         while (Time.timeScale > 0)
         {
-            float x = 10; //Constant
-            Time.timeScale -= Time.deltaTime;
+            float x = 2; //Constant
+            Time.timeScale -= Time.smoothDeltaTime/x;
             yield return new WaitForEndOfFrame();
         }
     }

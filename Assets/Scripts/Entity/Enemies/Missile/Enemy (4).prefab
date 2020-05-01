@@ -126,3 +126,4 @@ MonoBehaviour:
   Target: {fileID: 0}
   Speed: 10
   DeathSound: {fileID: 8300000, guid: a178c9e8f0bff4fbfb94f611934976f4, type: 3}
+  Score: 2

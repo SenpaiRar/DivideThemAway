@@ -15,4 +15,4 @@ MonoBehaviour:
   Enemy: {fileID: 2281753646256413903, guid: 1d06c1cf039e1da49819e4e8ef114321, type: 3}
   LevelToSpawnAt: 1
   numberMultiplier: 5
-  SpawnInterval: 4
+  SpawnInterval: 1

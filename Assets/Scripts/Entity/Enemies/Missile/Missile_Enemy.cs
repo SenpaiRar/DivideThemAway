@@ -7,6 +7,7 @@ public class Missile_Enemy : Enemy
     public Entity Target;
     public float Speed;
     public AudioClip DeathSound;
+    public int Score;
     private void Start()
     {
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
@@ -27,6 +28,7 @@ public class Missile_Enemy : Enemy
     }
     public override void TakeDamage(int T)
     {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Score_Manager>().AddScore(Score);
         Target.GetComponent<AudioSource>().PlayOneShot(DeathSound);
         Destroy(gameObject);
     }
@@ -34,12 +36,5 @@ public class Missile_Enemy : Enemy
     {
         Instantiate(this.gameObject, new Vector3(T.x, 0, T.z), Quaternion.identity);        
     }
-    //TODO: Hitstun
-    /*IEnumerator HitFreeze()
-    {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.1f);
-        Time.timeScale = 1;
-        Destroy(gameObject);
-    }*/
+    
 }

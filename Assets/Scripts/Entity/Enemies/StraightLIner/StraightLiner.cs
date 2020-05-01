@@ -10,6 +10,7 @@ public class StraightLiner : Enemy
     public float TimeTillDeath; //How long until self-destruct
     public AudioClip DeathSound;
     public int Damage;
+    public int Score;
     private void Start(){
         StartCoroutine(Lifespan());
         Target=GameObject.FindWithTag("Player");
@@ -27,6 +28,7 @@ public class StraightLiner : Enemy
         }
     }
     public override void TakeDamage(int T){
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Score_Manager>().AddScore(Score);
         Target.GetComponent<AudioSource>().PlayOneShot(DeathSound);
         Destroy(gameObject);
     }

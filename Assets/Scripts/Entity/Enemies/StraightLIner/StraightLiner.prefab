@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2281753646256413909}
   m_Layer: 0
   m_Name: StraightLiner
-  m_TagString: Untagged
+  m_TagString: Enemy_Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   TimeTillDeath: 10
   DeathSound: {fileID: 8300000, guid: a178c9e8f0bff4fbfb94f611934976f4, type: 3}
   Damage: 1
+  Score: 1
 --- !u!54 &2281753646256413909
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class ShootingPlatform : Enemy
     public Color HitColor;
     public AudioClip DamageSound;
     public AudioClip DeathSound;
+    public int Score;
     AudioSource Audiosrc;
     Vector3[] NextTargets = new Vector3[2];
     Vector3 Direction;
@@ -48,6 +49,7 @@ public class ShootingPlatform : Enemy
         StartingHeatlth -= T;
         if(StartingHeatlth <= 0)
         {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<Score_Manager>().AddScore(Score);
             Player.GetComponent<AudioSource>().PlayOneShot(DeathSound);
             Destroy(gameObject);
         }
