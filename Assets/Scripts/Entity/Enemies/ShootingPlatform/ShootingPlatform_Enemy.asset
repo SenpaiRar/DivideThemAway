@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShootingPlatform_Enemy
   m_EditorClassIdentifier: 
   Enemy: {fileID: 52691832166294559, guid: 8a9dc2a182a47524f8972fc44251e3fe, type: 3}
-  LevelToSpawnAt: 2
+  LevelToSpawnAt: 4
   numberMultiplier: 5
   SpawnInterval: 20

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sine_Enemy
   m_EditorClassIdentifier: 
   Enemy: {fileID: 8475088335017864794, guid: 68a0731e5ff2e40cba86a3c1f96273b3, type: 3}
-  LevelToSpawnAt: 4
+  LevelToSpawnAt: 2
   numberMultiplier: 1
-  SpawnInterval: 40
+  SpawnInterval: 15

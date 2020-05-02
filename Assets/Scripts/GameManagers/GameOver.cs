@@ -9,6 +9,8 @@ public class GameOver : MonoBehaviour
     public Animator SweepAnimation;
     public Animator WeaponTextAnimation;
     public Animator HealthTextAnimation;
+    public Animator ScoreTextAnimation;
+
     private void Start()
     {
         GameOverCanvas.SetActive(false);
@@ -23,6 +25,7 @@ public class GameOver : MonoBehaviour
         SweepAnimation.SetBool("GameOver", true);
         WeaponTextAnimation.SetBool("GameOver", true);
         HealthTextAnimation.SetBool("GameOver", true);
+        ScoreTextAnimation.SetBool("GameOver", true);
     }
     void ZA_WARUDO()
     {
